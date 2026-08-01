@@ -1,7 +1,7 @@
 import Hero from "@/components/home/Hero";
 import SearchSection from "@/components/home/SearchSection";
 import ProfessionGrid from "@/components/home/ProfessionGrid";
-import PopularTools from "@/components/home/PopularTools";
+import FeaturedTools from "@/components/home/FeaturedTools";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       <Hero />
       <SearchSection />
       <ProfessionGrid />
-      <PopularTools />
+      <FeaturedTools />
     </>
   );
 }
