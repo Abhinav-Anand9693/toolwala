@@ -1,4 +1,5 @@
 import ToolForm from "./ToolForm";
+import ToolOutput from "./output/ToolOutput";
 import { getFormByTool } from "@/lib/formRegistry";
 
 type Props = {
@@ -19,6 +20,13 @@ export default function ToolWorkspace({ slug }: Props) {
   return (
     <div className="rounded-xl border bg-white p-8 shadow-sm">
       <ToolForm config={formConfig} />
+
+      <ToolOutput
+        result={`{
+  "name": "Toolwala",
+  "status": "Working"
+}`}
+      />
     </div>
   );
 }
