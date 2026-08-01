@@ -2,16 +2,20 @@ import SearchBar from "@/components/searches/SearchBar";
 
 export default function SearchSection() {
   return (
-    <section>
+    <section className="py-20">
+      <div className="mx-auto max-w-5xl text-center">
+        <h2 className="text-4xl font-bold">
+          Find your perfect AI Tool
+        </h2>
 
-      <h2>Find your perfect tool</h2>
+        <p className="mt-4 text-gray-600">
+          Search by profession, category or tool name.
+        </p>
 
-      <p>
-        Search by profession, task or tool.
-      </p>
-
-      <SearchBar />
-
+        <div className="mt-10">
+          <SearchBar />
+        </div>
+      </div>
     </section>
   );
 }

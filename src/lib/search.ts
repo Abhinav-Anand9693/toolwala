@@ -1,7 +1,9 @@
 import { tools } from "@/config/tools";
 
 export function searchTools(query: string) {
-  const keyword = query.toLowerCase();
+  const keyword = query.trim().toLowerCase();
+
+  if (!keyword) return [];
 
   return tools.filter((tool) => {
     return (
