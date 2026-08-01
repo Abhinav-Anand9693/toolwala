@@ -3,7 +3,7 @@ import { professions } from "@/config/professions";
 
 export default function ProfessionGrid() {
   return (
-    <section className="py-20">
+    <section className="py-24">
       <Container>
         <div className="text-center">
           <h2 className="text-4xl font-bold">
@@ -11,7 +11,7 @@ export default function ProfessionGrid() {
           </h2>
 
           <p className="mt-4 text-gray-600">
-            Discover tools and AI workflows designed for your profession.
+            Discover AI tools built for your profession.
           </p>
         </div>
 
@@ -19,17 +19,17 @@ export default function ProfessionGrid() {
           {professions.map((profession) => (
             <div
               key={profession.id}
-              className="rounded-xl border p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="text-4xl">
+              <div className="text-5xl">
                 {profession.icon}
               </div>
 
-              <h3 className="mt-4 text-xl font-semibold">
+              <h3 className="mt-5 text-xl font-semibold">
                 {profession.title}
               </h3>
 
-              <p className="mt-2 text-sm text-gray-600">
+              <p className="mt-3 text-sm text-gray-600">
                 {profession.description}
               </p>
             </div>
