@@ -1,32 +1,19 @@
-import ToolForm from "./ToolForm";
-import ToolOutput from "./output/ToolOutput";
-import { getFormByTool } from "@/lib/formRegistry";
+import JsonFormatter from "@/tools/json-formatter/JsonFormatter";
 
 type Props = {
   slug: string;
 };
 
-export default function ToolWorkspace({ slug }: Props) {
-  const formConfig = getFormByTool(slug);
-
-  if (!formConfig) {
-    return (
-      <div className="rounded-xl border p-8">
-        No form available.
-      </div>
-    );
+export default function ToolWorkspace({
+  slug,
+}: Props) {
+  if (slug === "json-formatter") {
+    return <JsonFormatter />;
   }
 
   return (
-    <div className="rounded-xl border bg-white p-8 shadow-sm">
-      <ToolForm config={formConfig} />
-
-      <ToolOutput
-        result={`{
-  "name": "Toolwala",
-  "status": "Working"
-}`}
-      />
+    <div className="rounded-xl border p-8 text-center">
+      Tool Coming Soon...
     </div>
   );
 }

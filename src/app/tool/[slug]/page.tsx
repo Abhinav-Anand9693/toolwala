@@ -4,6 +4,7 @@ import ToolHeader from "@/components/tool/ToolHeader";
 import ToolWorkspace from "@/components/tool/ToolWorkspace";
 import RelatedTools from "@/components/tool/RelatedTools";
 import { getToolBySlug } from "@/lib/toolRegistry";
+import ToolPageLayout from "@/components/tool/ToolPageLayout";
 
 type PageProps = {
   params: Promise<{
@@ -23,9 +24,9 @@ export default async function ToolPage({ params }: PageProps) {
   return (
     <Container>
       <section className="py-20">
-        <ToolHeader tool={tool} />
-
-        <ToolWorkspace slug={slug} />
+        <ToolPageLayout tool={tool}>
+  <ToolWorkspace slug={slug} />
+</ToolPageLayout>
 
         <RelatedTools />
       </section>
