@@ -5,4 +5,5 @@ export interface Tool {
   profession: string;
   description: string;
   isAI: boolean;
+  processor: string;
 }
