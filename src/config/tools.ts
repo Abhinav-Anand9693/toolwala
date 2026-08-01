@@ -1,3 +1,4 @@
+import { Tool } from "@/types/tool";
 export const tools = [
   {
     id: "resume-generator",

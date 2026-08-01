@@ -1,4 +1,6 @@
-export const professions = [
+import { Profession } from "@/types/profession";
+
+export const professions: Profession[] = [
   {
     id: "developer",
     title: "Developer",
