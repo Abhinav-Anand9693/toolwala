@@ -1,21 +1,29 @@
-export default function ToolForm() {
+import { ToolFormConfig } from "@/types/form";
+
+type Props = {
+  config: ToolFormConfig;
+};
+
+export default function ToolForm({ config }: Props) {
   return (
-    <div className="rounded-lg border p-6">
-      <h2 className="text-xl font-semibold">
-        Tool Input
-      </h2>
+    <div className="space-y-6">
+      {config.fields.map((field) => (
+        <div key={field.id}>
+          <label className="mb-2 block font-medium">
+            {field.label}
+          </label>
 
-      <div className="mt-6 space-y-4">
-        <input
-          type="text"
-          placeholder="Enter your prompt..."
-          className="w-full rounded-lg border p-3"
-        />
+          <input
+            type={field.type}
+            placeholder={field.placeholder}
+            className="w-full rounded-lg border p-3"
+          />
+        </div>
+      ))}
 
-        <button className="rounded-lg bg-black px-6 py-3 text-white">
-          Run Tool
-        </button>
-      </div>
+      <button className="rounded-lg bg-black px-6 py-3 text-white">
+        Run Tool
+      </button>
     </div>
   );
 }

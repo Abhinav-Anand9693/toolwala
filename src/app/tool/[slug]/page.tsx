@@ -25,7 +25,7 @@ export default async function ToolPage({ params }: PageProps) {
       <section className="py-20">
         <ToolHeader tool={tool} />
 
-        <ToolWorkspace />
+        <ToolWorkspace slug={slug} />
 
         <RelatedTools />
       </section>
