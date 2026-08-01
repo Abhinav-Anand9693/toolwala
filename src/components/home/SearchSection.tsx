@@ -1,31 +1,17 @@
-import Container from "@/components/layout/Container";
+import SearchBar from "@/components/searches/SearchBar";
 
 export default function SearchSection() {
   return (
-    <section className="py-20">
-      <Container>
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-bold">
-            Search by Task
-          </h2>
+    <section>
 
-          <p className="mt-4 text-gray-600">
-            Describe what you want to accomplish.
-          </p>
+      <h2>Find your perfect tool</h2>
 
-          <div className="mt-8 flex gap-3">
-            <input
-              type="text"
-              placeholder='Try "Create Resume"'
-              className="flex-1 rounded-lg border px-4 py-3"
-            />
+      <p>
+        Search by profession, task or tool.
+      </p>
 
-            <button className="rounded-lg bg-black px-6 py-3 text-white">
-              Search
-            </button>
-          </div>
-        </div>
-      </Container>
+      <SearchBar />
+
     </section>
   );
 }

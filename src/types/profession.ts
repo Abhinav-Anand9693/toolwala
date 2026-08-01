@@ -3,4 +3,5 @@ export interface Profession {
   title: string;
   icon: string;
   description: string;
+  
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "@/components/layout/Container";
 import { professions } from "@/config/professions";
 
@@ -17,7 +18,8 @@ export default function ProfessionGrid() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {professions.map((profession) => (
-            <div
+            <Link
+              href={`/profession/${profession.id}`}
               key={profession.id}
               className="rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
@@ -32,7 +34,7 @@ export default function ProfessionGrid() {
               <p className="mt-3 text-sm text-gray-600">
                 {profession.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>

@@ -7,6 +7,7 @@ export const tools = [
     profession: "student",
     description: "Generate professional resumes using AI.",
     isAI: true,
+    processor: "resume-generator",
   },
   {
     id: "invoice-generator",
@@ -15,6 +16,7 @@ export const tools = [
     profession: "business",
     description: "Create invoices in seconds.",
     isAI: false,
+    processor: "invoice-generator",
   },
   {
     id: "json-formatter",
@@ -23,6 +25,7 @@ export const tools = [
     profession: "developer",
     description: "Format and validate JSON.",
     isAI: false,
+    processor: "json-formatter",
   },
   {
     id: "lesson-generator",
@@ -31,5 +34,6 @@ export const tools = [
     profession: "teacher",
     description: "Generate lesson plans using AI.",
     isAI: true,
+    processor: "lesson-generator",
   },
 ];
