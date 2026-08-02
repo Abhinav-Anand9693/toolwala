@@ -23,14 +23,15 @@ export const metadata: Metadata = {
     "Professional AI Workspace for Developers, Teachers, HR, Lawyers, Students and Businesses.",
 };
 
+import { ClerkProvider } from "@clerk/nextjs";
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
+    <ClerkProvider>
+    <html lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body
@@ -45,5 +46,6 @@ export default function RootLayout({
   <Footer />
 </body>
     </html>
+    </ClerkProvider>
   );
 }
