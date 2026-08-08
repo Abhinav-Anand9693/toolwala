@@ -7,3 +7,4 @@ export interface Tool {
   isAI: boolean;
   processor: string;
 }
+

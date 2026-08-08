@@ -36,4 +36,14 @@ export const tools = [
     isAI: true,
     processor: "lesson-generator",
   },
+
+  {
+  id: "base64-encoder",
+  title: "Base64 Encoder / Decoder",
+  category: "Developer",
+  profession: "developer",
+  description: "Encode and decode Base64 strings instantly.",
+  isAI: false,
+  processor: "base64",
+}
 ];
