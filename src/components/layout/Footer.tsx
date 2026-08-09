@@ -1,40 +1,109 @@
 import Link from "next/link";
 import {
   FaGithub as Github,
-  FaTwitter as Twitter,
-  FaLinkedin as Linkedin,} from "react-icons/fa";
-import {
-  ArrowUpRight
- 
+  FaLinkedin as Linkedin,
+  FaTwitter as Twitter }
+  from "react-icons/fa";
+
+  import { ArrowUpRight 
+  
 } from "lucide-react";
 
 const productLinks = [
-  { label: "All Tools", href: "/tools" },
-  { label: "AI Tools", href: "/tools" },
-  { label: "Developer Tools", href: "/profession/developer" },
-  { label: "Pricing", href: "/pricing" },
+  {
+    label: "All Tools",
+    href: "/tools",
+  },
+  {
+    label: "AI Tools",
+    href: "/tools?type=ai",
+  },
+  {
+    label: "Developer Tools",
+    href: "/profession/developer",
+  },
+  {
+    label: "Categories",
+    href: "/tools",
+  },
+  {
+    label: "Pricing",
+    href: "/pricing",
+  },
 ];
 
 const companyLinks = [
-  { label: "About", href: "#" },
-  { label: "Contact", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "Careers", href: "#" },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+  {
+    label: "Careers",
+    href: "/careers",
+  },
+];
+
+const resourceLinks = [
+  {
+    label: "Help Center",
+    href: "/help",
+  },
+  {
+    label: "FAQ",
+    href: "/faq",
+  },
+  {
+    label: "Tool Directory",
+    href: "/tools",
+  },
 ];
 
 const legalLinks = [
-  { label: "Privacy", href: "#" },
-  { label: "Terms", href: "#" },
-  { label: "Security", href: "#" },
+  {
+    label: "Privacy Policy",
+    href: "/privacy",
+  },
+  {
+    label: "Terms of Service",
+    href: "/terms",
+  },
+  {
+    label: "Cookie Policy",
+    href: "/cookies",
+  },
+  {
+    label: "Security",
+    href: "/security",
+  },
+  {
+    label: "Refund Policy",
+    href: "/refunds",
+  },
+  {
+    label: "Accessibility",
+    href: "/accessibility",
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white">
+
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+
+        <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr]">
+
           {/* Brand */}
           <div>
+
             <Link
               href="/"
               className="text-2xl font-bold tracking-tight text-slate-950"
@@ -43,58 +112,61 @@ export default function Footer() {
             </Link>
 
             <p className="mt-4 max-w-sm leading-7 text-slate-500">
-              Your professional AI workspace for getting
-              everyday work done faster.
+              Your professional AI workspace for productivity,
+              developer, business, career and everyday tools.
             </p>
 
-            <div className="mt-6 flex items-center gap-3">
-              <a
-                href="#"
-                aria-label="GitHub"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
+            <div className="mt-6 flex gap-3">
+
+              <SocialLink
+                href="https://github.com/"
+                label="GitHub"
               >
                 <Github className="h-4 w-4" />
-              </a>
+              </SocialLink>
 
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
+              <SocialLink
+                href="https://linkedin.com/"
+                label="LinkedIn"
               >
                 <Linkedin className="h-4 w-4" />
-              </a>
+              </SocialLink>
+
+              <SocialLink
+                href="https://x.com/"
+                label="X"
+              >
+                <Twitter className="h-4 w-4" />
+              </SocialLink>
+
             </div>
+
           </div>
 
-          {/* Product */}
           <FooterColumn
             title="Product"
             links={productLinks}
           />
 
-          {/* Company */}
           <FooterColumn
             title="Company"
             links={companyLinks}
           />
 
-          {/* Legal */}
+          <FooterColumn
+            title="Resources"
+            links={resourceLinks}
+          />
+
           <FooterColumn
             title="Legal"
             links={legalLinks}
           />
+
         </div>
 
-        {/* Bottom */}
-        <div className="mt-16 flex flex-col gap-4 border-t border-slate-200 pt-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-5 border-t border-slate-200 pt-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+
           <p>
             © {new Date().getFullYear()} Toolwala. All rights reserved.
           </p>
@@ -103,24 +175,25 @@ export default function Footer() {
             Built for people who get things done.
             <ArrowUpRight className="h-4 w-4" />
           </div>
+
         </div>
+
       </div>
+
     </footer>
   );
 }
 
-type FooterColumnProps = {
+function FooterColumn({
+  title,
+  links,
+}: {
   title: string;
   links: {
     label: string;
     href: string;
   }[];
-};
-
-function FooterColumn({
-  title,
-  links,
-}: FooterColumnProps) {
+}) {
   return (
     <div>
       <h3 className="text-sm font-semibold text-slate-950">
@@ -128,8 +201,9 @@ function FooterColumn({
       </h3>
 
       <ul className="mt-5 space-y-3">
+
         {links.map((link) => (
-          <li key={link.label}>
+          <li key={link.href}>
             <Link
               href={link.href}
               className="text-sm text-slate-500 transition hover:text-slate-950"
@@ -138,7 +212,30 @@ function FooterColumn({
             </Link>
           </li>
         ))}
+
       </ul>
     </div>
+  );
+}
+
+function SocialLink({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950"
+    >
+      {children}
+    </a>
   );
 }
