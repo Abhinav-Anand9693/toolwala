@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
-import ToolHeader from "@/components/tool/ToolHeader";
+
 import ToolWorkspace from "@/components/tool/ToolWorkspace";
 import RelatedTools from "@/components/tool/RelatedTools";
 import { getToolBySlug } from "@/lib/toolRegistry";
