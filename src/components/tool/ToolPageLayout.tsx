@@ -1,6 +1,12 @@
+"use client";
+
 import { ReactNode } from "react";
-import { ArrowLeft, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
+import {
+  ArrowLeft,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
 
 import { Tool } from "@/types/tool";
 import Breadcrumb from "./Breadcrumb";
@@ -18,14 +24,18 @@ export default function ToolPageLayout({
   return (
     <main className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+
         <Breadcrumb
           profession={tool.profession}
           title={tool.title}
         />
 
         <div className="mt-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+
           <div className="max-w-3xl">
+
             <div className="mb-4 flex flex-wrap items-center gap-2">
+
               <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
                 {tool.category}
               </span>
@@ -35,6 +45,7 @@ export default function ToolPageLayout({
                   AI Powered
                 </span>
               )}
+
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
@@ -46,6 +57,7 @@ export default function ToolPageLayout({
             </p>
 
             <div className="mt-5 flex flex-wrap gap-5 text-sm text-slate-500">
+
               <span className="inline-flex items-center gap-2">
                 <Zap className="h-4 w-4 text-amber-500" />
                 Fast processing
@@ -55,10 +67,12 @@ export default function ToolPageLayout({
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
                 Secure
               </span>
+
             </div>
           </div>
 
           <ToolActions />
+
         </div>
 
         <div className="mt-12">
@@ -74,6 +88,7 @@ export default function ToolPageLayout({
             Browse all tools
           </Link>
         </div>
+
       </div>
     </main>
   );

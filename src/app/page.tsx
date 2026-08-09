@@ -1,7 +1,7 @@
 import Hero from "@/components/home/Hero";
 import SearchSection from "@/components/home/SearchSection";
+import CategoriesSection from "@/components/home/CategoriesSection";
 import ProfessionGrid from "@/components/home/ProfessionGrid";
-import FeaturedTools from "@/components/home/FeaturedTools";
 import ToolsSection from "@/components/home/ToolsSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import FAQ from "@/components/home/FAQ";
@@ -11,14 +11,20 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+
       <SearchSection />
+
+      <CategoriesSection />
+
       <ProfessionGrid />
-      <FeaturedTools />
-       <ToolsSection />
+
+      <ToolsSection />
+
       <HowItWorks />
+
       <FAQ />
+
       <FinalCTA />
     </>
-     
   );
 }
