@@ -1,49 +1,47 @@
 import { Tool } from "@/types/tool";
-export const tools = [
+
+export const tools: Tool[] = [
   {
     id: "resume-generator",
     title: "Resume Generator",
     category: "Career",
     profession: "student",
-    description: "Generate professional resumes using AI.",
+    description:
+      "Generate professional resumes using AI.",
     isAI: true,
-    processor: "resume-generator",
+    processor:"resume-generator",
   },
+
   {
     id: "invoice-generator",
     title: "Invoice Generator",
     category: "Business",
     profession: "business",
-    description: "Create invoices in seconds.",
+    description:
+      "Create professional invoices in seconds.",
     isAI: false,
-    processor: "invoice-generator",
+    processor:"invoice-generator",
   },
+
   {
     id: "json-formatter",
     title: "JSON Formatter",
     category: "Developer",
     profession: "developer",
-    description: "Format and validate JSON.",
+    description:
+      "Format, beautify and validate JSON instantly.",
     isAI: false,
-    processor: "json-formatter",
+    processor:"json-formatter", 
   },
+
   {
     id: "lesson-generator",
     title: "Lesson Plan Generator",
     category: "Education",
     profession: "teacher",
-    description: "Generate lesson plans using AI.",
+    description:
+      "Generate structured lesson plans using AI.",
     isAI: true,
-    processor: "lesson-generator",
+    processor:"lesson-generator",
   },
-
-  {
-  id: "base64-encoder",
-  title: "Base64 Encoder / Decoder",
-  category: "Developer",
-  profession: "developer",
-  description: "Encode and decode Base64 strings instantly.",
-  isAI: false,
-  processor: "base64",
-}
 ];
