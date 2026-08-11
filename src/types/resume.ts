@@ -1,4 +1,14 @@
-export type ResumeExperience = {
+export type PersonalInfo = {
+  fullName: string;
+  jobTitle: string;
+  email: string;
+  phone: string;
+  location: string;
+  linkedin: string;
+  github: string;
+};
+
+export type ExperienceItem = {
   id: string;
   company: string;
   role: string;
@@ -8,7 +18,7 @@ export type ResumeExperience = {
   description: string;
 };
 
-export type ResumeEducation = {
+export type EducationItem = {
   id: string;
   institution: string;
   degree: string;
@@ -17,7 +27,7 @@ export type ResumeEducation = {
   endDate: string;
 };
 
-export type ResumeProject = {
+export type ProjectItem = {
   id: string;
   name: string;
   technologies: string;
@@ -25,26 +35,40 @@ export type ResumeProject = {
   link: string;
 };
 
+export type ResumeEvidence = {
+  id: string;
+  skill: string;
+  source:
+    | "experience"
+    | "project"
+    | "education"
+    | "certification"
+    | "other";
+  description: string;
+  verified: boolean;
+};
+
+export type ResumeTemplate =
+  | "classic"
+  | "modern"
+  | "student";
+
 export type ResumeData = {
-  personal: {
-    fullName: string;
-    jobTitle: string;
-    email: string;
-    phone: string;
-    location: string;
-    linkedin: string;
-    github: string;
-  };
+  personal: PersonalInfo;
 
   summary: string;
 
-  experience: ResumeExperience[];
+  experience: ExperienceItem[];
 
-  education: ResumeEducation[];
+  education: EducationItem[];
 
-  projects: ResumeProject[];
+  projects: ProjectItem[];
 
   skills: string[];
 
   targetJobDescription: string;
+
+  template: ResumeTemplate;
+
+  evidence: ResumeEvidence[];
 };

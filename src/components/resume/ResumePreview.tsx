@@ -20,7 +20,7 @@ export default function ResumePreview({
     resume.skills.length > 0;
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 p-4 shadow-sm sm:p-6">
+    <div className=" resume-preview overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 p-4 shadow-sm sm:p-6">
 
       <div className="mx-auto max-w-[850px] bg-white px-8 py-10 text-slate-900 shadow-sm sm:px-12 sm:py-12">
 
@@ -86,7 +86,7 @@ export default function ResumePreview({
 
         {resume.summary && (
 
-          <section className="mt-6">
+          <section className=" resume-section mt-6">
 
             <h2 className="border-b border-slate-200 pb-1 text-sm font-bold uppercase tracking-wider">
               Professional Summary
@@ -106,7 +106,7 @@ export default function ResumePreview({
 
         {hasExperience && (
 
-          <section className="mt-6">
+          <section className=" resume-section mt-6">
 
             <h2 className="border-b border-slate-200 pb-1 text-sm font-bold uppercase tracking-wider">
               Experience
@@ -176,7 +176,7 @@ export default function ResumePreview({
 
         {hasProjects && (
 
-          <section className="mt-6">
+          <section className=" resume-section mt-6">
 
             <h2 className="border-b border-slate-200 pb-1 text-sm font-bold uppercase tracking-wider">
               Projects
@@ -227,8 +227,8 @@ export default function ResumePreview({
 
         {hasEducation && (
 
-          <section className="mt-6">
-
+          <section className=" resume-section mt-6">
+            
             <h2 className="border-b border-slate-200 pb-1 text-sm font-bold uppercase tracking-wider">
               Education
             </h2>
@@ -288,7 +288,7 @@ export default function ResumePreview({
 
         {hasSkills && (
 
-          <section className="mt-6">
+          <section className="resume-section mt-6">
 
             <h2 className="border-b border-slate-200 pb-1 text-sm font-bold uppercase tracking-wider">
               Skills

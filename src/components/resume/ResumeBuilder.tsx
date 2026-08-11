@@ -6,6 +6,27 @@ import {
   Trash2,
   Sparkles,
 } from "lucide-react";
+import EvidencePanel from "./EvidencePanel";
+
+import {
+  useResumeStorage,
+} from "@/hooks/useResumeStorage";
+
+import SaveStatus from "./SaveStatus";
+
+import ResumeProgress from "./ResumeProgress";
+
+import ResumeToolbar from "./ResumeToolbar";
+
+import ResumeTemplates from "./ResumeTemplates";
+
+import {
+  printResume,
+} from "@/engine/resume/resumeExporter";
+
+import {
+  scoreResume,
+} from "@/engine/resume/resumeScorer";
 
 import Container from "@/components/layout/Container";
 
@@ -53,6 +74,10 @@ const initialResume: ResumeData = {
   skills: [],
 
   targetJobDescription: "",
+
+  template: "classic",
+
+  evidence: [],
 };
 
 /* =========================================================
@@ -60,8 +85,15 @@ const initialResume: ResumeData = {
 ========================================================= */
 
 export default function ResumeBuilder() {
-  const [resume, setResume] =
-    useState<ResumeData>(initialResume);
+  const {
+  resume,
+  setResume,
+  isSaving,
+  lastSaved,
+  clearResume,
+} = useResumeStorage(
+  initialResume
+);
 
   const [skillInput, setSkillInput] =
     useState("");
@@ -87,6 +119,10 @@ export default function ResumeBuilder() {
     () => analyzeResume(resume),
     [resume]
   );
+  const resumeScore = useMemo(
+  () => scoreResume(resume),
+  [resume]
+);
 
   /* =======================================================
      JOB MATCH
@@ -459,13 +495,38 @@ export default function ResumeBuilder() {
 
       <Container>
 
-        <div className="grid gap-8 py-10 lg:grid-cols-[minmax(0,1fr)_420px]">
+  {/* RESUME TOOLBAR */}
+  <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+
+    <ResumeToolbar
+      onPrint={printResume}
+      onClear={clearResume}
+    />
+
+    <SaveStatus
+      isSaving={isSaving}
+      lastSaved={lastSaved}
+    />
+
+  </div>
+
+  <div className="grid gap-8 py-10 lg:grid-cols-[minmax(0,1fr)_420px]">
 
           {/* =================================================
               LEFT SIDE
           ================================================= */}
 
           <div className="space-y-6">
+
+                    <ResumeTemplates
+          value={resume.template}
+          onChange={(template) =>
+            setResume((current) => ({
+              ...current,
+              template,
+            }))
+          }
+/>
 
             {/* =================================================
                 PERSONAL INFORMATION
@@ -1232,6 +1293,26 @@ export default function ResumeBuilder() {
             </section>
 
           </div>
+
+
+                      {/* =====================================================
+                EVIDENCE VAULT
+            ===================================================== */}
+
+            <div className="mt-8">
+              <EvidencePanel
+                evidence={resume.evidence}
+                onAdd={(item) =>
+                  setResume((current) => ({
+                    ...current,
+                    evidence: [
+                      ...current.evidence,
+                      item,
+                    ],
+                  }))
+                }
+              />
+            </div>
 
           {/* =================================================
               RIGHT SIDE
