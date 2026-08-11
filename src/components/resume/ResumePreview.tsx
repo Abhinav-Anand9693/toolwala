@@ -20,9 +20,9 @@ export default function ResumePreview({
     resume.skills.length > 0;
 
   return (
-    <div className=" resume-preview overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 p-4 shadow-sm sm:p-6">
+    <div className="resume-preview w-full min-w-0 overflow-x-auto overflow-y-hidden rounded-2xl border border-slate-200 bg-slate-100 p-2 shadow-sm sm:p-4 md:p-6">
 
-      <div className="mx-auto max-w-[850px] bg-white px-8 py-10 text-slate-900 shadow-sm sm:px-12 sm:py-12">
+      <div className="mx-auto w-full max-w-[850px] min-w-0 bg-white px-4 py-6 text-slate-900 shadow-sm sm:px-8 sm:py-10 md:px-12 md:py-12">
 
         {/* ========================================
             HEADER
@@ -30,20 +30,20 @@ export default function ResumePreview({
 
         <header className="border-b border-slate-300 pb-5">
 
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h1 className="break-words text-2xl font-bold tracking-tight sm:text-3xl">
             {resume.personal.fullName ||
               "Your Name"}
           </h1>
 
-          <p className="mt-1 text-lg font-medium text-slate-700">
+         <p className="mt-1 break-words text-base font-medium text-slate-700 sm:text-lg">
             {resume.personal.jobTitle ||
               "Professional Title"}
           </p>
 
-          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
+            <div className="mt-3 flex min-w-0 flex-wrap gap-x-3 gap-y-1 text-xs text-slate-600 sm:gap-x-4 sm:text-sm">
 
             {resume.personal.email && (
-              <span>
+              <span className="break-all">
                 {resume.personal.email}
               </span>
             )}
@@ -65,13 +65,13 @@ export default function ResumePreview({
           <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
 
             {resume.personal.linkedin && (
-              <span>
+              <span className="break-all">
                 {resume.personal.linkedin}
               </span>
             )}
 
             {resume.personal.github && (
-              <span>
+              <span className="break-all">
                 {resume.personal.github}
               </span>
             )}
@@ -88,11 +88,11 @@ export default function ResumePreview({
 
           <section className=" resume-section mt-6">
 
-            <h2 className="border-b border-slate-200 pb-1 text-sm font-bold uppercase tracking-wider">
+           <h2 className="break-words border-b border-slate-200 pb-1 text-xs font-bold uppercase tracking-wider sm:text-sm">
               Professional Summary
             </h2>
 
-            <p className="mt-3 text-sm leading-6 text-slate-700">
+            <p className="mt-3 break-words text-xs leading-5 text-slate-700 sm:text-sm sm:leading-6">
               {resume.summary}
             </p>
 
@@ -153,7 +153,7 @@ export default function ResumePreview({
 
                     {experience.description && (
 
-                      <p className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-700">
+                      <p className="mt-2 break-words whitespace-pre-line text-xs leading-5 text-slate-700 sm:text-sm sm:leading-6">
                         {experience.description}
                       </p>
 
