@@ -8,7 +8,14 @@ export function runProcessor(type: string, data: unknown) {
       return AIProcessor(data);
 
     case "json":
+      if (typeof data !== "string") {
+        return {
+          success: false,
+          result: "JSON Processor requires a string input",
+        };
+      }
       return JSONProcessor(data);
+
 
     case "pdf":
       return PDFProcessor();
