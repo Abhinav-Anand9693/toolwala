@@ -44,4 +44,16 @@ export const tools: Tool[] = [
     isAI: true,
     processor:"lesson-generator",
   },
+   
+  {
+  id: "lawyer-workspace",
+  title: "Lawyer Workspace",
+  category: "Legal",
+  profession: "lawyer",
+  description:
+    "Manage cases, organize documents, and analyze case information with an AI-assisted legal workspace.",
+  isAI: true,
+  processor:"lawyer-workspace",
+},
+ 
 ];

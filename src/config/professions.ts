@@ -49,4 +49,11 @@ export const professions: Profession[] = [
     icon: "💼",
     description: "Finance & Productivity",
   },
+  {
+  id: "traders",
+    title: "Traders",
+    icon: "💹",
+    description: "Trading & Investment",
+  },
+
 ];
