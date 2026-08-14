@@ -439,7 +439,7 @@ export default function ResumeBuilder() {
   ======================================================= */
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="resume-builder min-h-screen bg-slate-50">
 
       {/* ===================================================
           HERO
@@ -516,7 +516,7 @@ export default function ResumeBuilder() {
               LEFT SIDE
           ================================================= */}
 
-          <div className="space-y-6">
+          <div className="w-full min-w-0 space-y-6 overflow-x-hidden">
 
                     <ResumeTemplates
           value={resume.template}
@@ -1379,9 +1379,13 @@ export default function ResumeBuilder() {
 
           </div>
 
-          <ResumePreview
-            resume={resume}
-          />
+          <div className="resume-preview-container w-full min-w-0 overflow-hidden rounded-2xl bg-slate-100 p-2 sm:p-4 lg:p-6">
+            <div className="mx-auto w-full max-w-[794px]">
+              <ResumePreview
+                resume={resume}
+              />
+            </div>
+          </div>
 
         </section>
 
