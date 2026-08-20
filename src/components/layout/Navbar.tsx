@@ -31,9 +31,6 @@ export default function Navbar() {
               Pricing
             </NavLink>
 
-            <NavLink href="/lawyer">
-              Lawyer Workspace
-            </NavLink>
           </nav>
 
           {/* RIGHT SIDE */}

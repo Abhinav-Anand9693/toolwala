@@ -83,12 +83,7 @@ export default function MobileMenu() {
                   Lawyer Workspace
                 </NavLink>
 
-                <NavLink href="/ExplorebyCategory" onClick={closeMenu}>
-                  Explore by Category
-                </NavLink>
-                <NavLink href="/ExplorebyProfession" onClick={closeMenu}>
-                  Explore by Profession
-                </NavLink>
+  
 
               <NavLink href="/about" onClick={closeMenu}>
                   About Us
