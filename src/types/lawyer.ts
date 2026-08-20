@@ -1,34 +1,33 @@
 export type CaseStatus =
-  | "active"
-  | "pending"
-  | "closed";
+  | "ACTIVE"
+  | "PENDING"
+  | "CLOSED";
 
 export type CaseType =
-  | "civil"
-  | "criminal"
-  | "corporate"
-  | "family"
-  | "property"
-  | "other";
+  | "CIVIL"
+  | "CRIMINAL"
+  | "CORPORATE"
+  | "FAMILY"
+  | "PROPERTY"
+  | "OTHER";
 
 export type LawyerCase = {
   id: string;
+  userId: string;
 
   title: string;
-
-  caseNumber: string;
+  caseNumber: string | null;
 
   caseType: CaseType;
 
-  court: string;
+  court: string | null;
+  clientName: string | null;
+  oppositeParty: string | null;
 
-  clientName: string;
-
-  oppositeParty: string;
-
-  description: string;
+  description: string | null;
 
   status: CaseStatus;
 
   createdAt: string;
+  updatedAt: string;
 };

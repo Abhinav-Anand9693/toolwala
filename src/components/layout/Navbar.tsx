@@ -1,60 +1,49 @@
-import Link from "next/link";
+"use client";
+
 import Container from "./Container";
-import Logo from "../common/Logo";
+import NavLogo from "@/components/layout/navbar/NavLogo";
+import NavLink from "@/components/layout/navbar/NavLinks";
+import MobileMenu from "@/components/layout/navbar/MobileMenu";
+import NavActions from "./NavActions";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
       <Container>
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between gap-4">
+          {/* LOGO */}
+          <NavLogo />
 
-          <Link href="/">
-            <Logo />
-          </Link>
-
-          <nav className="hidden items-center gap-8 md:flex">
-
-            <Link
-              href="/"
-              className="text-sm font-medium text-slate-600 transition hover:text-slate-950"
-            >
+          {/* DESKTOP NAVIGATION */}
+          <nav
+            aria-label="Main navigation"
+            className="hidden items-center gap-8 lg:flex"
+          >
+            <NavLink href="/">
               Home
-            </Link>
+            </NavLink>
 
-            <Link
-              href="/tools"
-              className="text-sm font-medium text-slate-600 transition hover:text-slate-950"
-            >
+            <NavLink href="/tools">
               Tools
-            </Link>
+            </NavLink>
 
-            <Link
-              href="/pricing"
-              className="text-sm font-medium text-slate-600 transition hover:text-slate-950"
-            >
+            <NavLink href="/pricing">
               Pricing
-            </Link>
+            </NavLink>
 
+            <NavLink href="/lawyer">
+              Lawyer Workspace
+            </NavLink>
           </nav>
 
+          {/* RIGHT SIDE */}
           <div className="flex items-center gap-3">
+            {/* DESKTOP ACTIONS */}
+            <NavActions />
 
-            <Link
-              href="/sign-in"
-              className="hidden rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 sm:inline-flex"
-            >
-              Login
-            </Link>
-
-            <Link
-              href="/sign-up"
-              className="inline-flex items-center rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-600"
-            >
-              Get Started
-            </Link>
-
+            {/* MOBILE MENU */}
+            <MobileMenu />
           </div>
-
         </div>
       </Container>
     </header>

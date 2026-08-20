@@ -1,11 +1,8 @@
-import Link from "next/link";
-import {
-  ArrowLeft,
-  FileText,
-  MapPin,
-  UserRound,
-  CalendarDays,
-} from "lucide-react";
+"use client";
+
+import { useEffect, useState } from "react";
+
+import type { LawyerCase } from "@/types/lawyer";
 
 type Props = {
   caseId: string;
@@ -14,132 +11,155 @@ type Props = {
 export default function CaseDetails({
   caseId,
 }: Props) {
+  const [caseItem, setCaseItem] =
+    useState<LawyerCase | null>(null);
+
+  const [loading, setLoading] =
+    useState(true);
+
+  const [error, setError] =
+    useState("");
+
+  useEffect(() => {
+    async function loadCase() {
+      try {
+        const response = await fetch(
+          `/api/cases/${caseId}`,
+          {
+            cache: "no-store",
+          }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.error ||
+              "Failed to load case"
+          );
+        }
+
+        setCaseItem(data.case);
+      } catch (error) {
+        setError(
+          error instanceof Error
+            ? error.message
+            : "Failed to load case."
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadCase();
+  }, [caseId]);
+
+  if (loading) {
+    return (
+      <div className="rounded-2xl border bg-white p-10">
+        Loading case...
+      </div>
+    );
+  }
+
+  if (error || !caseItem) {
+    return (
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-red-700">
+        {error || "Case not found"}
+      </div>
+    );
+  }
+
   return (
-    <main className="min-h-screen bg-slate-50">
+    <div className="space-y-6">
 
-      <section className="border-b border-slate-200 bg-white">
+      <div>
+        <p className="text-sm font-medium text-slate-500">
+          Case
+        </p>
 
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 className="mt-1 text-3xl font-bold text-slate-950">
+          {caseItem.title}
+        </h1>
+      </div>
 
-          <Link
-            href="/lawyer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Cases
-          </Link>
+      <div className="grid gap-5 md:grid-cols-2">
 
-          <div className="mt-6">
+        <Info
+          label="Case Number"
+          value={
+            caseItem.caseNumber ||
+            "Not provided"
+          }
+        />
 
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
-              Active
-            </span>
+        <Info
+          label="Case Type"
+          value={caseItem.caseType}
+        />
 
-            <h1 className="mt-3 text-3xl font-bold text-slate-950">
-              ABC vs XYZ
-            </h1>
+        <Info
+          label="Court"
+          value={
+            caseItem.court ||
+            "Not provided"
+          }
+        />
 
-            <p className="mt-2 text-sm text-slate-500">
-              Case Number: CIV/2026/001
-            </p>
+        <Info
+          label="Client"
+          value={
+            caseItem.clientName ||
+            "Not provided"
+          }
+        />
 
-          </div>
+        <Info
+          label="Opposite Party"
+          value={
+            caseItem.oppositeParty ||
+            "Not provided"
+          }
+        />
 
-        </div>
+        <Info
+          label="Status"
+          value={caseItem.status}
+        />
 
-      </section>
+      </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="rounded-2xl border bg-white p-6">
+        <h2 className="font-semibold text-slate-950">
+          Case Description
+        </h2>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-slate-600">
+          {caseItem.description ||
+            "No description provided."}
+        </p>
+      </div>
 
-          <div className="lg:col-span-2">
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-
-              <h2 className="text-xl font-bold text-slate-950">
-                Case Overview
-              </h2>
-
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                Civil dispute regarding property and ownership.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div className="space-y-4">
-
-            <InfoItem
-              icon={<MapPin className="h-4 w-4" />}
-              label="Court"
-              value="Patna High Court"
-            />
-
-            <InfoItem
-              icon={<UserRound className="h-4 w-4" />}
-              label="Client"
-              value="ABC"
-            />
-
-            <InfoItem
-              icon={<UserRound className="h-4 w-4" />}
-              label="Opposite Party"
-              value="XYZ"
-            />
-
-            <InfoItem
-              icon={<CalendarDays className="h-4 w-4" />}
-              label="Created"
-              value="10 Aug 2026"
-            />
-
-          </div>
-
-        </div>
-
-        <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center">
-
-          <FileText className="mx-auto h-10 w-10 text-slate-300" />
-
-          <h3 className="mt-4 font-bold text-slate-950">
-            Documents
-          </h3>
-
-          <p className="mt-2 text-sm text-slate-500">
-            Document upload will be connected in the next sprint.
-          </p>
-
-        </div>
-
-      </section>
-
-    </main>
+    </div>
   );
 }
 
-function InfoItem({
-  icon,
+function Info({
   label,
   value,
 }: {
-  icon: React.ReactNode;
   label: string;
   value: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
-        {icon}
+    <div className="rounded-2xl border bg-white p-5">
+      <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
         {label}
-      </div>
-
-      <p className="mt-2 font-semibold text-slate-900">
-        {value}
       </p>
 
+      <p className="mt-2 font-medium text-slate-900">
+        {value}
+      </p>
     </div>
   );
 }
